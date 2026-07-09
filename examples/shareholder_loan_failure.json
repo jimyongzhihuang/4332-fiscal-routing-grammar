@@ -1,0 +1,58 @@
+{
+  "case_id": "case-shareholder-loan-failure-001",
+  "audit_trace_id": "trace-shareholder-loan-failure-001",
+
+  "scenario": "A corporation records a payment to a shareholder as a shareholder loan repayment, but the supporting evidentiary route is incomplete.",
+
+  "claimed_label": "shareholder loan repayment",
+
+  "pjls_evidence_review": {
+    "opening_shareholder_loan_balance": "missing",
+    "general_ledger_continuity": "missing",
+    "corporate_resolution": "missing",
+    "bank_transaction_record": "present",
+    "supporting_accounting_entries": "incomplete",
+    "evidence_status": "insufficient"
+  },
+
+  "cdm_classification": {
+    "drawer_claimed_by_user": "shareholder loan repayment",
+    "drawer_validated_by_system": false,
+    "classification_status": "unclassified",
+    "reason": "The label cannot be accepted without opening balance continuity, ledger support, and corporate authorization."
+  },
+
+  "routing_nodes": {
+    "node_1_to_4_route_layer": {
+      "income_rail": "property",
+      "route_status": "not_validated"
+    },
+    "node_5_to_7_actor_subject_layer": {
+      "tax_subject": "corporation",
+      "subject_status": "identified"
+    },
+    "node_8_to_10_transformation_layer": {
+      "has_timing_shift": false,
+      "has_character_shift": true,
+      "has_taxpayer_shift": false,
+      "transformation_status": "requires_support"
+    },
+    "node_11_to_12_trigger_layer": {
+      "trigger_ownership_change": false,
+      "trigger_use_change": false,
+      "trigger_status": "not_triggered"
+    }
+  },
+
+  "closure_control": {
+    "closure_status": "insufficient_evidence",
+    "routing_status": "invalid_path",
+    "output_blocked": true,
+    "blocked_reason": "AI output blocked because the evidentiary record and classification route have not reached structural closure."
+  },
+
+  "permitted_ai_response": {
+    "system_response": "No tax conclusion should be generated at this stage. The shareholder loan repayment label is not structurally closed. Additional evidence is required before any legal-tax output can be produced.",
+    "prohibited_response_type": "Do not generate a substantive tax opinion treating the payment as a valid shareholder loan repayment."
+  }
+}
